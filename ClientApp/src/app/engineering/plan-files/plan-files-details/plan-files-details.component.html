@@ -1,0 +1,184 @@
+<div class="flex justify-end mt-2">
+	<button class="btn-reverse" (click)="addPlanFile()">Add</button>
+</div>
+<div class="w-full rounded shadow-2 p-10 bg-white mt-2">
+	<form (ngSubmit)="onSubmit()">
+		<div class="flex justify-around">
+			<div class="flex flex-col">
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Box</label>
+					<input type="text" [(ngModel)]="planFile.epF_BOX" name="epF_BOX" />
+				</div>
+
+				<div class="flex flex-col py-4">
+					<label class="text-sm text-gray-600">County</label>
+
+					<select class="border rounded p-1" [(ngModel)]="planFile.epF_COUNTY" name="epF_COUNTY">
+
+						<option *ngFor="let county of counties" [selected]="planFile.epF_COUNTY == county.rcO_NUM" [value]="county.rcO_NUM">{{county.rcO_NAME}}</option>
+					</select>
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">File Status</label>
+					<input type="text" [(ngModel)]="planFile.epF_FILE_STATUS_STRING" name="epF_FILE_STATUS_STRING" />
+				</div>
+
+				<div class="flex flex-col py-4">
+					<label class="text-sm text-gray-600">File Location</label>
+					<select class="border rounded p-1" [(ngModel)]="planFile.epF_FILE_LOCATION_STRING" name="epF_FILE_LOCATION_STRING">
+						<option value="Cleared Side">Active Side</option>
+						<option value="Box">Box</option>
+						<option value="Cleared Side">Cleared Side</option>
+						<option value="Done">Done</option>
+					</select>
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Folder Color</label>
+					<select class="border rounded p-1" [(ngModel)]="planFile.epF_FOLDER_COLOR_STRING" name="epF_FOLDER_COLOR_STRING">
+						<option value="Black">Black</option>
+						<option value="Blue">Blue</option>
+						<option value="Brown">Brown</option>
+						<option value="Green">Green</option>
+						<option value="Orange">Orange</option>
+						<option value="Pink">Pink</option>
+						<option value="Purple">Purple</option>
+						<option value="Red">Red</option>
+						<option value="Tan">Tan</option>
+						<option value="White">White</option>
+						<option value="Yellow">Yellow</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="flex flex-col">
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">File Number</label>
+					<input type="text" [(ngModel)]="planFile.epF_FILE_NUM" name="epF_FILE_NUM" />
+				</div>
+
+				<div class="flex flex-col py-2">
+					<label class="text-sm text-gray-600">File Part</label>
+					<input type="text" [(ngModel)]="planFile.epF_FILE_PART" name="epF_FILE_PART" />
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Comments</label>
+					<textarea class="border h-24 p-2 rounded" type="text" [(ngModel)]="planFile.epF_COMMENTS" name="epF_COMMENTS"></textarea>
+				</div>
+
+				<div class="flex items-center py-4">
+					<div>
+						<input type="checkbox" disabled [ngModel]="planFile.epF_CLEARED_SIDE | convertToBoolean: 'Y'" (ngModelChange)="planFile.epF_CLEARED_SIDE = $event ? 'Y' : 'N'" name="epF_CLEARED_SIDE" />
+					</div>
+					<div>
+						<label class="text-sm text-gray-600 ml-2">Cleared Side</label>
+					</div>
+				</div>
+
+				<div class="flex flex-col pt-1">
+					<label class="text-sm text-gray-600">Cleared</label>
+					<input type="date" [ngModel]="planFile.epF_CLEARED_DT | date:'yyyy-MM-dd'" (ngModelChange)="planFile.epF_CLEARED_DT = $event" name="epF_CLEARED_DT" />
+				</div>
+			</div>
+
+			<div class="flex flex-col">
+				<div class="flex flex-col pb-2">
+					<label class="text-sm text-gray-600">Condition Cleared</label>
+					<input type="date" [ngModel]="planFile.epF_COND_CLEAR_DT | date:'yyyy-MM-dd'" (ngModelChange)="planFile.epF_COND_CLEAR_DT = $event" name="epF_COND_CLEAR_DT" />
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">To Scanner</label>
+					<input type="date" [ngModel]="planFile.epF_TO_SCANNER_DT | date:'yyyy-MM-dd'" (ngModelChange)="planFile.epF_TO_SCANNER_DT = $event" name="epF_TO_SCANNER_DT" />
+				</div>
+
+				<div class="flex py-3">
+					<div>
+						<input type="checkbox" [ngModel]="planFile.epF_DGN | convertToBoolean: 'Y'" (ngModelChange)="planFile.epF_DGN = $event ? 'Y' : 'N'" name="epF_DGN" />
+					</div>
+					<div>
+						<label class="text-sm text-gray-700 ml-2">DGN</label>
+					</div>
+				</div>
+
+				<div class="flex">
+					<div>
+						<input type="checkbox" [ngModel]="planFile.epF_PLAN_FILE_MISSING | convertToBoolean: 'Y'" (ngModelChange)="planFile.epF_PLAN_FILE_MISSING = $event ? 'Y' : 'N'" name="epF_PLAN_FILE_MISSING" />
+					</div>
+					<div>
+						<label class="text-sm text-gray-700 ml-2"> Plan File Missing</label>
+					</div>
+				</div>
+
+				<div class="flex py-3">
+					<div>
+						<input type="checkbox" disabled [ngModel]="planFile.epF_MISSING | convertToBoolean: 'Y'" (ngModelChange)="planFile.epF_MISSING = $event ? 'Y' : 'N'" name="epF_MISSING" />
+					</div>
+					<div>
+						<label class="text-sm text-gray-600 ml-2">Missing</label>
+					</div>
+				</div>
+
+				<div class="flex">
+					<div>
+						<input type="checkbox" disabled [ngModel]="planFile.epF_SCANNED | convertToBoolean: 'Y'" (ngModelChange)="planFile.epF_SCANNED = $event ? 'Y' : 'N'" name="epF_SCANNED" />
+					</div>
+					<div>
+						<label class="text-sm text-gray-600 ml-2">Scanned</label>
+					</div>
+				</div>
+
+				<div class="flex py-3">
+					<div>
+						<input disabled type="checkbox" [ngModel]="planFile.epF_MicroFilmed | convertToBoolean: 'Y'" (ngModelChange)="planFile.epF_MicroFilmed = $event ? 'Y' : 'N'" name="epF_MicroFilmed" />
+					</div>
+					<div>
+						<label class="text-sm text-gray-600 ml-2">Microfilmed</label>
+					</div>
+				</div>
+
+				<div class="flex">
+					<div>
+						<input disabled type="checkbox" [ngModel]="planFile.epF_ACTIVE_SIDE | convertToBoolean: 'Y'" (ngModelChange)="planFile.epF_ACTIVE_SIDE = $event ? 'Y' : 'N'" name="epF_ACTIVE_SIDE" />
+					</div>
+					<div>
+						<label class="text-sm text-gray-600 ml-2">Active Side</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="flex flex-col">
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Tracts</label>
+					<input type="text" [(ngModel)]="planFile.epF_TRACTS" name="epF_TRACTS" />
+				</div>
+
+				<div class="flex flex-col py-2">
+					<label class="text-sm text-gray-600">Description</label>
+					<textarea class="border rounded h-24 p-2" type="text" [(ngModel)]="planFile.epF_DESCRIPT" name="epF_DESCRIPT"></textarea>
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Created By/Date</label>
+					<input class="bg-gray-200" readonly type="text" [(ngModel)]="planFile.epF_CREATED_BY" name="epF_CREATED_BY" />
+
+					<input class="bg-gray-200" readonly type="date" [ngModel]="planFile.epF_CREATED_DT | date:'yyyy-MM-dd'" (ngModelChange)="planFile.epF_CREATED_DT = $event" name="epF_CREATED_DT" />
+				</div>
+
+				<div class="flex flex-col pt-2">
+					<label class="text-sm text-gray-600">Modified By/Date</label>
+					<input class="bg-gray-200" readonly type="text" [(ngModel)]="planFile.epF_MODIFIED_BY" name="epF_MODIFIED_BY" />
+
+					<input class="bg-gray-200" readonly type="date" [ngModel]="planFile.epF_MODIFIED_DT | date:'yyyy-MM-dd'" (ngModelChange)="planFile.epF_MODIFIED_DT = $event" name="epF_MODIFIED_DT" />
+				</div>
+			</div>
+		</div>
+		<div class="flex justify-end mt-4">
+			<button class="btn" type='submit'>
+				Submit
+			</button>
+		</div>
+	</form>
+</div>

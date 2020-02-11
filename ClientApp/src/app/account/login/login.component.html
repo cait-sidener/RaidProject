@@ -1,0 +1,13 @@
+<div class="p-4 bg-white rounded shadow-2 mt-8">
+	<h1>Login</h1>
+	<form (ngSubmit)="onSubmit()">
+		<label class="mr-2">Username:</label>
+		<input [(ngModel)]="username" name="username">
+		<label class="mr-2">Password:</label>
+		<input [(ngModel)]="password" name="password" type="password" />
+		<div class="flex pt-4">
+			<button class="btn mr-2" type="submit">Submit</button>
+			<button class="btn" type="button" (click)="loginWithAD()">Login with AD</button>
+		</div>
+	</form>
+</div>

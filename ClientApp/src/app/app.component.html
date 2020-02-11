@@ -1,0 +1,52 @@
+<div id="page">
+	<header class="z-50 items-center shadow-2 flex justify-between bg-teal-900 py-4">
+		<div class="pl-10">
+			<img src="../assets/images/logo.svg" />
+		</div>
+		<div class="pr-20">
+			<a class="text-white" [routerLink]="['/account']" [routerLinkActive]="['active-link']">Account</a>
+		</div>
+	</header>
+
+	<nav class="p-8 flex flex-col shadow-4">
+		<p class="-ml-4 font-medium">Sections</p>
+		<a class="py-1" [routerLink]="['/']" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact:true}">Home</a>
+		<a class="py-1" disabled>Acquisition</a>
+		<a class="py-1" disabled>Appraisal</a>
+		<a class="py-1" [routerLink]="['/certtitle']" [routerLinkActive]="['active-link']">Certificate of Title</a>
+		<a class="py-1" [routerLink]="['/engineering-home']" [routerLinkActive]="['active-link']">Engineering</a>
+		<a disabled class="py-1">Inventory</a>
+		<a class="py-1" disabled>Joint Use</a>
+		<a disabled class="py-1">Property Management</a>
+
+		<a class="py-1" [routerLink]="['/employees']" [routerLinkActive]="['active-link']">Employee List</a>
+
+		<a [routerLink]="['/rrtable']" [routerLinkActive]="['active-link']" class="py-1">Railroad</a>
+		<a class="py-1" disabled>Relocation</a>
+		<a disabled class="py-1">RID</a>
+		<a class="py-1" disabled>Schedule</a>
+		<a disabled class="py-1">Tracts</a>
+
+		<p class="-ml-4 py-1 font-medium">People</p>
+		<a class="py-1" disabled>Consultants</a>
+		<a class="py-1" disabled>Right-of-Way Staff</a>
+		<a class="py-1" disabled>KDOT Design Squads</a>
+	</nav>
+
+	<!--<ul>
+		<li><a (click)='showModalExampleA()'>Modal: Default</a></li>
+		<li><a (click)='showModalExampleB()'>Modal: Static</a></li>
+		<li><a (click)='showModalExampleC()'>Modal: Full Page</a></li>
+	</ul>-->
+	<!--<app-time></app-time>-->
+	<main class="px-48 h-screen bg-gray-200">
+		<router-outlet></router-outlet>
+	</main>
+
+	<!--<app-weather></app-weather>-->
+	<app-modal>
+		<div class="flex justify-end bg-white rounded-t pr-3 pt-2">
+			<button class="modal-close btn mx-1 my-1">Close</button>
+		</div>
+	</app-modal>
+</div>

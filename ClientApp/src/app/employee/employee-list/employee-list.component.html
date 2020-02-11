@@ -1,0 +1,52 @@
+<div class="border-16 border-blue-400 p-2">
+	<h1>Employee List: {{filteredEmployees.length}}</h1>
+
+	<p>This component demonstrates fetching data from an external webhost.</p>
+	<p>Table is tracked by the ID, observe Elements tab of chrome DevTools.</p>
+	<p>Employee Data is guarded, will redirect to login if not logged in.</p>
+
+	<div *ngIf="employees && employees.length; else noContent" style="display:flex;">
+		<button class="btn mr-2" (click)="toggleEmployees()">{{showEmployees ? 'Hide' : 'Show'}} Employees</button>
+		<button class="btn" *ngIf="showEmployees" (click)="refreshEmployees()">Refresh</button>
+	</div>
+
+	<div *ngIf="showEmployees">
+		<div class="flex justify-between">
+			<div class="my-auto">
+				<label class="mr-2">Filter:</label>
+				<input [(ngModel)]="listFilter" name="listFilter" type="text" placeholder="Name" />
+			</div>
+			<app-pagination [items]="filteredEmployees" [pageSize]="5" (changePage)="onChangePage($event)"></app-pagination>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>User</th>
+					<th>Email</th>
+					<th>Address</th>
+					<th>City</th>
+					<th>Phone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!--TrackBy improves performace by telling Angular what it needs to redraw when the list data is refreshed.-->
+				<tr *ngFor="let employee of pagedEmployees; trackBy: trackById" [routerLink]="['/employees', { outlets: { 'secondary': [employee.id] } } ]" [routerLinkActive]="['active']">
+					<td>{{employee.id}}</td>
+					<td>{{employee.name}}</td>
+					<td>{{employee.username}}</td>
+					<td>{{employee.email}}</td>
+					<td>{{employee.address.street}}</td>
+					<td>{{employee.address.city}}</td>
+					<td>{{employee.phone}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<h6 *ngIf="employees" style="text-align: right; margin: 0.25rem;">Last Updated: {{ lastUpdated | date:'HH:mm:ss' }}</h6>
+	<ng-template #noContent>
+		<h4>Requesting Employee Data..</h4>
+	</ng-template>
+	<router-outlet name="secondary"></router-outlet>
+</div>

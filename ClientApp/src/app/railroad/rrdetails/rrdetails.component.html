@@ -1,0 +1,149 @@
+<div class="w-full rounded shadow-2 p-4 bg-white mt-2">
+	<form (ngSubmit)="onSubmit()">
+		<div *ngIf="railroad">
+			<div class="mb-2 flex justify-between bg-gray-400 rounded p-2">
+				<div class="w-2/5 mr-8">
+					<input class="bg-transparent focus:outline-none focus:shadow-outline block w-full appearance-none leading-normal font-medium" type="text" [(ngModel)]="railroad.rrA_RR_COMPANY_NAME" name="rrA_RR_COMPANY_NAME" />
+				</div>
+				<div>
+					<input class="w-16 bg-transparent font-medium" type="text" [(ngModel)]="railroad.rrA_QTR_SECTION" name="rrA_QTR_SECTION" />
+					<input class="w-8 bg-transparent font-medium" type="text" [(ngModel)]="railroad.rrA_SECTION" name="rrA_SECTION" />
+					<input class="w-8 bg-transparent font-medium" type="text" [(ngModel)]="railroad.rrA_TOWNSHIP" name="rrA_TOWNSHIP" />
+					<input class="w-8 bg-transparent font-medium" type="text" [(ngModel)]="railroad.rrA_TOWNSHIP_DIR" name="rrA_TOWNSHIP_DIR" />
+					<input class="w-8 bg-transparent font-medium" type="text" [(ngModel)]="railroad.rrA_RANGE" name="rrA_RANGE" />
+					<input class="w-8 bg-transparent font-medium" type="text" [(ngModel)]="railroad.rrA_RANGE_DIR" name="rrA_RANGE_DIR" />
+				</div>
+			</div>
+			<div class="flex justify-between">
+				<div class="flex flex-col">
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">County</label>
+
+						<select class="border" [(ngModel)]="railroad.rrA_COUNTY" name="rrA_COUNTY">
+
+							<option *ngFor="let county of counties" [selected]="railroad.rrA_COUNTY == county.rcO_NUM" [value]="county.rcO_NUM">{{county.rcO_NAME}}</option>
+						</select>
+					</div>
+
+					<div class="flex flex-col py-1">
+						<label class="text-sm text-gray-600">Termination Reason</label>
+						<input type="text" [(ngModel)]="railroad.rrA_REASON_FOR_TERMINATION" name="rrA_REASON_FOR_TERMINATION" />
+					</div>
+
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">Description</label>
+						<textarea class="border p-2 h-20" type="text" [(ngModel)]="railroad.rrA_DESCRIPTION" name="rrA_DESCRIPTION"></textarea>
+					</div>
+				</div>
+
+				<div class="flex-col">
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">CD Number</label>
+						<input type="text" [(ngModel)]="railroad.rrA_CD_NUM" name="rrA_CD_NUM" />
+					</div>
+					<div class="flex flex-col py-1">
+						<label class="text-sm text-gray-600">LD Number</label>
+						<input type="text" [(ngModel)]="railroad.rrA_LD_NUM" name="rrA_LD_NUM" />
+					</div>
+					<div class="flex items-center">
+						<div>
+							<input type="checkbox" [ngModel]="railroad.rrA_HIGHWAY_STATUS | convertToBoolean: 'Y'" (ngModelChange)="railroad.rrA_HIGHWAY_STATUS = $event ? 'Y' : 'N'" name="rrA_HIGHWAY_STATUS" />
+						</div>
+						<div>
+							<label class="text-sm text-gray-600 ml-2">Highway Status</label>
+						</div>
+					</div>
+
+					<div class="flex items-center py-1">
+						<div>
+							<input type="checkbox" [ngModel]="railroad.rrA_PLANS_MARKED | convertToBoolean: 'Y'" (ngModelChange)="railroad.rrA_PLANS_MARKED = $event ? 'Y' : 'N'" name="rrA_PLANS_MARKED" />
+						</div>
+						<div>
+							<label class="text-sm text-gray-600 ml-2">Plans Marked</label>
+						</div>
+					</div>
+
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">Agreement Number</label>
+						<input type="text" [(ngModel)]="railroad.rrA_AGREEMENT_NUMBER" name="rrA_AGREEMENT_NUMBER" />
+					</div>
+				</div>
+				<div class="flex flex-col">
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">Route</label>
+						<input type="text" [(ngModel)]="railroad.rrA_ROUTE" name="rrA_ROUTE" />
+					</div>
+					<div class="flex flex-col py-1">
+						<label class="text-sm text-gray-600">Location</label>
+						<input type="text" [(ngModel)]="railroad.rrA_LOCATION" name="rrA_LOCATION" />
+					</div>
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">Area</label>
+						<input type="text" [(ngModel)]="railroad.rrA_AREA" name="rrA_AREA" />
+					</div>
+					<div class="flex flex-col py-1">
+						<label class="text-sm text-gray-600">Length</label>
+						<input type="text" [(ngModel)]="railroad.rrA_LENGTH" name="rrA_LENGTH" />
+					</div>
+					<div class="flex items-center">
+						<div>
+							<input type="checkbox" [ngModel]="railroad.rrA_SPOT | convertToBoolean: 'Y'" (ngModelChange)="railroad.rrA_SPOT = $event ? 'Y' : 'N'" name="rrA_SPOT" />
+						</div>
+						<div>
+							<label class="text-sm text-gray-600 ml-2">Spot</label>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-col">
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">Last Agreement Date</label>
+						<input type="date" [ngModel]="railroad.rrA_LAST_AGREEMENT_DATE | date:'yyyy-MM-dd'" (ngModelChange)="railroad.rrA_LAST_AGREEMENT_DATE = $event" name="rrA_LAST_AGREEMENT_DATE" />
+					</div>
+					<div class="flex flex-col py-1">
+						<label class="text-sm text-gray-600">Last Agreement Duration</label>
+						<input type="text" [(ngModel)]="railroad.rrA_DURATION" name="rrA_DURATION" />
+					</div>
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">Last Agreement Expiration Date</label>
+						<input type="date" [ngModel]="railroad.rrA_LAST_AGREEMENT_EXPIRATION_DATE | date:'yyyy-MM-dd'" (ngModelChange)="railroad.rrA_LAST_AGREEMENT_EXPIRATION_DATE = $event" name="rrA_LAST_AGREEMENT_EXPIRATION_DATE" />
+					</div>
+					<div class="flex flex-col py-1">
+						<label class="text-sm text-gray-600">Audit Number</label>
+						<input type="text" [(ngModel)]="railroad.rrA_AUDIT_NUM" name="rrA_AUDIT_NUM" />
+					</div>
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">Rent Amount</label>
+						<input placeholder="$" type="text" [(ngModel)]="railroad.rrA_RENT_AMOUNT" name="rrA_RENT_AMOUNT" />
+					</div>
+				</div>
+
+				<div class="flex flex-col">
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">Lease Purpose</label>
+						<textarea class="border p-2 h-20" type="text" [(ngModel)]="railroad.rrA_LEASE_PURPOSE" name="rrA_LEASE_PURPOSE"></textarea>
+					</div>
+
+					<div class="flex flex-col py-1">
+						<label class="text-sm text-gray-600">Created By/Date</label>
+						<input class="bg-gray-200" readonly type="text" [(ngModel)]="railroad.rrA_CREATED_BY" name="rrA_CREATED_BY" />
+
+						<input class="bg-gray-200" readonly type="date" [ngModel]="railroad.rrA_CREATED_DT | date:'yyyy-MM-dd'" (ngModelChange)="railroad.rrA_CREATED_DT = $event" name="rrA_CREATED_DT" />
+					</div>
+
+					<div class="flex flex-col">
+						<label class="text-sm text-gray-600">Modified By/Date</label>
+						<input class="bg-gray-200" readonly type="text" [(ngModel)]="railroad.rrA_MODIFIED_BY" name="rrA_MODIFIED_BY" />
+
+						<input class="bg-gray-200" readonly type="date" [ngModel]="railroad.rrA_MODIFIED_DT | date:'yyyy-MM-dd'" (ngModelChange)="railroad.rrA_MODIFIED_DT = $event" name="rrA_MODIFIED_DT" />
+					</div>
+				</div>
+			</div>
+			<div class="flex justify-end mt-2">
+				<button class="btn" value='Submit'>
+					Submit
+				</button>
+			</div>
+		</div>
+	</form>
+</div>
+

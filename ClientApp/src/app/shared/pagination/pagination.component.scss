@@ -1,0 +1,15 @@
+.pagination {
+	display: flex;
+	list-style: none;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: 0.25rem;
+	margin: 0;
+
+	li {
+		a {
+			margin-left: -1px;
+			cursor: pointer;
+		}
+	}
+}

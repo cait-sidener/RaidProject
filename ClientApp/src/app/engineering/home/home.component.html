@@ -1,0 +1,86 @@
+<div class="flex justify-end fade-in">
+	<div class="max-w-sm p-3 bg-white rounded-b-lg overflow-hidden shadow-2 flex flex-end mb-4 flex justify-center">
+		<p class="text-2xl">Engineering</p>
+	</div>
+</div>
+
+<div class="flex items-center justify-center">
+	<div>
+		<a class="bg-white items-center text-teal-900 flex p-2 rounded-l-lg text-sm uppercase h-16 shadow-1" [routerLink]="['/engineering-home']" [routerLinkActive]="['active-link']">
+			Home
+		</a>
+	</div>
+	<div class="shadow-1 mx-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['general']}}]"
+		   [routerLinkActive]="['active']">
+			General
+		</a>
+	</div>
+	<div class="shadow-1 mr-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['existing-rw']}}]"
+		   [routerLinkActive]="['active']">
+			Existing R/W
+		</a>
+	</div>
+	<div class="shadow-1 mr-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['checking']}}]"
+		   [routerLinkActive]="['active']">
+			Checking
+		</a>
+	</div>
+	<div class="shadow-1 mr-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['planning']}}]"
+		   [routerLinkActive]="['active']">
+			Planning
+		</a>
+	</div>
+	<div class="shadow-1 mr-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['certificate-of-title']}}]"
+		   [routerLinkActive]="['active']">
+			Certificate of Title
+		</a>
+	</div>
+	<div class="shadow-1 mr-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['legal']}}]"
+		   [routerLinkActive]="['active']">
+			Legal
+		</a>
+	</div>
+	<div class="shadow-1 mr-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['technician-history']}}]"
+		   [routerLinkActive]="['active']">
+			Technician History
+		</a>
+	</div>
+	<div class="shadow-1 mr-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['project-notes']}}]"
+		   [routerLinkActive]="['active']">
+			Project Notes
+		</a>
+	</div>
+	<div class="shadow-1 mr-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['survey-notes']}}]"
+		   [routerLinkActive]="['active']">
+			Survey Notes
+		</a>
+	</div>
+	<div class="shadow-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['plan-files']}}]"
+		   [routerLinkActive]="['active']">
+			Plan Files
+		</a>
+	</div>
+	<div class="shadow-1 mx-1">
+		<a class="bg-white items-center text-teal-900 flex p-2 text-sm uppercase h-16" [routerLink]="['/engineering-home', {outlets: {'secondary': ['plan-revisions']}}]"
+		   [routerLinkActive]="['active']">
+			Plan Revisions
+		</a>
+	</div>
+	<div>
+		<a class="bg-white items-center text-teal-900 flex p-2 rounded-r-lg text-sm uppercase h-16 shadow-1" href="http://reports/BIPortal/Contents.aspx?categoryId=39014" target="_blank">
+			Engineering Reports
+		</a>
+	</div>
+</div>
+
+<router-outlet name="secondary"></router-outlet>

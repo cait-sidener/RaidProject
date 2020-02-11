@@ -1,0 +1,46 @@
+import { Binary } from '@angular/compiler';
+
+export interface IEngineering {
+    enG_ID: number;
+    enG_RC_ID: number;
+    enG_RJ_ID: number;
+    enG_STATUS: number;
+    enG_TRACTS_AMT: Binary;
+    enG_CONSULTANT_NAME: string;
+    enG_REQUEST_ON_DT: Date;
+    enG_REQUEST_TAR_DT: Date;
+    enG_CHECKER_TAR_DT: Date;
+    enG_CHECKER_ACT_DT: Date;
+    enG_TO_CHECKER_TAR_DT: Date;
+    enG_TO_CHECKER_ACT_DT: Date;
+    enG_CHECKER: number;
+    enG_PERCENT_COMP: Binary;
+    enG_TO_DESIGN_TAR_DT: Date;
+    enG_TO_DESIGN_ACT_DT: Date;
+    enG_REC_FC_PLANS_TAR_DT: Date;
+    enG_REC_FC_PLANS_ACT_DT: Date;
+    enG_CT_ORDER_DT: Date;
+    enG_CT_DUE_DT: Date;
+    enG_CT_REC_DT: Date;
+    enG_CT_CONTACT: number;
+    enG_PURCHASE_MEMO_DT: Date;
+    enG_REC_OFF_PLANS_TAR_DT: Date;
+    enG_REC_OFF_PLANS_ACT_DT: Date;
+    enG_LEG_TO_CHECKER_TAR_DT: Date;
+    enG_LEG_TO_CHECKER_ACT_DT: Date;
+    enG_LEG_CHECKER_DUE_DT: Date;
+    enG_LEG_CHECKER: number;
+    enG_LEG_CHECKER_ACT_DT: Date;
+    enG_RW_FINAL_MEETING_DT: Date;
+    enG_REC_FINAL_PLANS_TAR_DT: Date;
+    enG_REC_FINAL_PLANS_ACT_DT: Date;
+    enG_TO_APPRAISAL_TAR_DT: Date;
+    enG_TO_APPRAISAL_ACT_DT: Date;
+    enG_TO_JOAN_IND: string;
+    enG_CREATED_BY: string;
+    enG_CREATED_DT: Date;
+    enG_DIS_IND: string;
+    enG_MODIFIED_BY: string;
+    enG_MODIFIED_DT: Date;
+    enG_MODIFIED: Binary;
+}

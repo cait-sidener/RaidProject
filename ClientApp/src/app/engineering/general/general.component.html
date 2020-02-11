@@ -1,0 +1,33 @@
+<div class="w-full rounded shadow-2 p-10 bg-white mt-2">
+	<form (ngSubmit)="onSubmit()">
+		<div class="flex justify-around">
+			<div class="flex flex-col rounded shadow-2 p-4">
+				<p class="text-lg">Progress</p>
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Percentage Complete</label>
+					<input type="text" [ngModel]="(engineering.enG_PERCENT_COMP/100) | percent" (ngModelChange)="engineering.enG_PERCENT_COMP = $event" name="enG_PERCENT_COMP" />
+				</div>
+			</div>
+			<div class="flex flex-col rounded shadow-2 p-4">
+				<p class="text-lg">Funding</p>
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Percentage Complete</label>
+					<input type="text" [ngModel]="(engineering.enG_PERCENT_COMP/100) | percent" (ngModelChange)="engineering.enG_PERCENT_COMP = $event" name="enG_PERCENT_COMP" />
+				</div>
+			</div>
+
+			<div class="flex flex-col rounded shadow-2 p-4">
+				<p class="text-lg">Important Dates</p>
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Percentage Complete</label>
+					<input type="text" [ngModel]="(engineering.enG_PERCENT_COMP/100) | percent" (ngModelChange)="engineering.enG_PERCENT_COMP = $event" name="enG_PERCENT_COMP" />
+				</div>
+			</div>
+		</div>
+		<div class="flex justify-end mt-4">
+			<button class="btn" type='submit'>
+				Submit
+			</button>
+		</div>
+	</form>
+</div>

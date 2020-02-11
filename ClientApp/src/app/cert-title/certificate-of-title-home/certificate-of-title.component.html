@@ -1,0 +1,83 @@
+<div class="w-full rounded-b bg-white">
+	<form (ngSubmit)="onSubmit()">
+		<div class="flex justify-center px-8">
+			<div class="flex flex-col">
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Status</label>
+
+					<select class="border rounded p-1" [(ngModel)]="certTitle.rcT_STATUS" name="rcT_STATUS">
+
+						<option *ngFor="let systemCode of systemCodes" [selected]="certTitle.rcT_STATUS == systemCode.cD_ID" [value]="systemCode.cD_ID">{{systemCode.cD_DISPLAY}}</option>
+					</select>
+				</div>
+
+				<div class="flex flex-col py-2">
+					<label class="text-sm text-gray-600">Request</label>
+
+					<select class="border rounded p-1" [(ngModel)]="certTitle.rcT_REQUEST" name="rcT_REQUEST">
+
+						<option *ngFor="let systemCode of systemCodes" [selected]="certTitle.rcT_REQUEST == systemCode.cD_ID" [value]="systemCode.cD_ID">{{systemCode.cD_DISPLAY}}</option>
+					</select>
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Ordered By</label>
+
+					<select class="border rounded p-1" [(ngModel)]="certTitle.rcT_ORDERED_BY" name="rcT_ORDERED_BY">
+
+						<option *ngFor="let staff of staff" [selected]="certTitle.rcT_ORDERED_BY == staff.rS_ID" [value]="staff.rS_ID">{{staff.rS_FIRST_NAME}} {{staff.rS_LAST_NAME}}</option>
+					</select>
+				</div>
+
+				<div class="flex flex-col py-2">
+					<label class="text-sm text-gray-600">Returned To</label>
+
+					<select class="border rounded p-1" [(ngModel)]="certTitle.rcT_RETURNED_TO" name="rcT_RETURNED_TO">
+
+						<option *ngFor="let staff of staff" [selected]="certTitle.rcT_RETURNED_TO == staff.rS_ID" [value]="staff.rS_ID">{{staff.rS_FIRST_NAME}} {{staff.rS_LAST_NAME}}</option>
+					</select>
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Assigned To</label>
+
+					<select class="border rounded p-1" [(ngModel)]="certTitle.rcT_ASSIGNED_TO" name="rcT_ASSIGNED_TO">
+
+						<option *ngFor="let ctAgent of ctAgents" [selected]="certTitle.rcT_ASSIGNED_TO == ctAgent.rvA_ID" [value]="ctAgent.rvA_ID">{{ctAgent.rvA_COMPANY_NAME}}: {{ctAgent.rvA_FIRST_NAME}} {{ctAgent.rvA_LAST_NAME}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="flex flex-col mx-8">
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Tract</label>
+					<input [(ngModel)]="certTitle.rcT_TRACT_CT" type="text" name="rcT_TRACT_CT" />
+				</div>
+
+				<div class="flex flex-col py-4">
+					<label class="text-sm text-gray-600">Ordered</label>
+					<input type="date" [ngModel]="certTitle.rcT_ORDERED_DT | date:'yyyy-MM-dd'" (ngModelChange)="certTitle.rcT_ORDERED_DT = $event" name="rcT_ORDERED_DT" />
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Due</label>
+					<input type="date" [ngModel]="certTitle.rcT_DUE_DT | date:'yyyy-MM-dd'" (ngModelChange)="certTitle.rcT_DUE_DT = $event" name="rcT_DUE_DT" />
+				</div>
+
+				<div class="flex flex-col py-4">
+					<label class="text-sm text-gray-600">Returned</label>
+					<input type="date" [ngModel]="certTitle.rcT_RETURNED_DT | date:'yyyy-MM-dd'" (ngModelChange)="certTitle.rcT_RETURNED_DT = $event" name="rcT_RETURNED_DT" />
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Estimated Completion</label>
+					<input type="date" [ngModel]="certTitle.rcT_EST_COMP_DT | date:'yyyy-MM-dd'" (ngModelChange)="certTitle.rcT_EST_COMP_DT = $event" name="rcT_EST_COMP_DT" />
+				</div>
+			</div>
+		</div>
+		<div class="flex justify-end py-4 pr-4">
+			<button class="btn" type='submit'>
+				Submit
+			</button>
+		</div>
+	</form>
+</div>

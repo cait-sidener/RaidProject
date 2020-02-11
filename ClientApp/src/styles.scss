@@ -1,0 +1,160 @@
+/*Tailwind CSS Injection*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add global styles to this file, and also import other style files; Uses SCSS - https://sass-lang.com/documentation/syntax */
+
+/*#region Tags*/
+h1, .h1 {
+	@apply text-4xl font-medium;
+}
+
+h2, .h2 {
+	@apply text-3xl font-medium;
+}
+
+h3, .h3 {
+	@apply text-2xl font-medium;
+}
+
+h4, .h4 {
+	@apply text-xl font-medium;
+}
+
+h5, .h5 {
+	@apply text-lg font-medium;
+}
+
+h6, .h6 {
+	@apply font-medium;
+}
+
+hr {
+	@apply block my-2 mx-auto border border-gray-100;
+}
+
+html {
+	font-size: 16px;
+}
+
+input {
+	@apply border-b border-gray-400 outline-none px-1;
+
+	&:focus {
+		@apply border-purple-400;
+	}
+
+	&::placeholder {
+		@apply text-sm font-light;
+	}
+}
+
+table {
+	border-collapse: collapse;
+
+	thead {
+		@apply border-b text-blue-400;
+
+		th {
+			@apply px-2;
+		}
+	}
+
+	tbody {
+		@apply border-b;
+
+		tr td {
+			@apply px-1;
+
+			&:not(:first-child) {
+				@apply border-l;
+			}
+		}
+	}
+}
+/*#endregion Tags*/
+
+/*#region Classes*/
+.btn {
+	@apply outline-none bg-transparent text-teal-900 font-medium py-2 px-4 border-teal-900 border rounded;
+
+	&.active, &:active {
+		@apply text-white bg-teal-900;
+	}
+
+	&[disabled],
+	&.disabled {
+		@apply border-teal-900 bg-gray-200;
+		cursor: default;
+	}
+
+	&:focus,
+	&:hover {
+		@apply outline-none;
+
+		&:not(.disabled):not([disabled]):not(:active):not(.active) {
+			@apply text-white bg-teal-900;
+		}
+	}
+}
+
+.btn-reverse {
+	@apply outline-none bg-teal-900 text-white font-medium py-2 px-4 border-teal-900 border rounded;
+
+	&.active, &:active {
+		@apply text-teal-900 bg-transparent;
+	}
+
+	&[disabled],
+	&.disabled {
+		@apply border-teal-900 bg-gray-200;
+		cursor: default;
+	}
+
+	&:focus,
+	&:hover {
+		@apply outline-none;
+
+		&:not(.disabled):not([disabled]):not(:active):not(.active) {
+			@apply text-teal-900 bg-transparent;
+		}
+	}
+}
+
+.td {
+	@apply outline-none;
+
+	&.active, &:active {
+		@apply bg-gray-400;
+	}
+
+	&:focus,
+	&:hover {
+		@apply outline-none bg-gray-400;
+
+	}
+}
+/*#endregion Classes*/
+
+/*#region IDs*/
+/*#endregion IDs*/
+
+/*#region Browser Pseudo Elements*/
+::-webkit-scrollbar {
+	width: 0.3rem;
+	height: 0.3rem;
+}
+
+::-webkit-scrollbar-track {
+	background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #888;
+
+	&:hover {
+		background: #555;
+	}
+}
+/*#endregion Browser Pseudo Elements*/

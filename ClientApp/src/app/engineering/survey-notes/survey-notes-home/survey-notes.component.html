@@ -1,0 +1,48 @@
+<div class="w-full rounded-b bg-white">
+	<form (ngSubmit)="onSubmit()">
+		<div class="flex justify-center px-8">
+			<div class="flex flex-col">
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Assigned</label>
+
+					<select class="border rounded p-1" [(ngModel)]="surveyNote.srV_ASSIGNED" name="srV_ASSIGNED">
+
+						<option *ngFor="let staff of staff" [selected]="surveyNote.srV_ASSIGNED == staff.rS_ID" [value]="staff.rS_ID">{{staff.rS_FIRST_NAME}} {{staff.rS_LAST_NAME}}</option>
+					</select>
+				</div>
+
+				<div class="flex flex-col py-4">
+					<label class="text-sm text-gray-600">Assigned Date</label>
+					<input type="date" [ngModel]="surveyNote.srV_ASSIGNED_DT | date:'yyyy-MM-dd'" (ngModelChange)="surveyNote.srV_ASSIGNED_DT = $event" name="srV_ASSIGNED_DT" />
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Received Date</label>
+					<input type="date" [ngModel]="surveyNote.srV_RCVD_DT | date:'yyyy-MM-dd'" (ngModelChange)="surveyNote.srV_RCVD_DT = $event" name="srV_RCVD_DT" />
+				</div>
+				<div class="flex flex-col pt-4">
+					<label class="text-sm text-gray-600">Items Received</label>
+					<textarea class="border rounded p-2 h-24" type="text" [(ngModel)]="surveyNote.srV_ITEMS_RCVD" name="srV_ITEMS_RCVD"></textarea>
+				</div>
+			</div>
+
+			<div class="flex flex-col mx-8">
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Project Number</label>
+					<input type="text" [(ngModel)]="surveyNote.srV_PROJ_NUM" name="srV_PROJ_NUM" />
+				</div>
+				<div class="flex flex-col py-2">
+					<label class="text-sm text-gray-600">Remarks</label>
+					<textarea class="border rounded p-2 h-24" [(ngModel)]="surveyNote.srV_REMARKS" name="srV_REMARKS" type="text"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="flex justify-end pr-4 py-4">
+			<button class="btn"
+					type='submit'>
+				Submit
+			</button>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,46 @@
+<div class="flex justify-end mt-2">
+	<button class="btn-reverse" (click)="addChecking()">Add</button>
+</div>
+<div class="w-full rounded shadow-2 p-10 bg-white mt-2">
+	<form (ngSubmit)="onSubmit()">
+		<div class="flex justify-center">
+			<div class="flex flex-col">
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Expected Date to Checker</label>
+					<input type="date" [ngModel]="engineering.enG_TO_CHECKER_TAR_DT | date:'yyyy-MM-dd'" (ngModelChange)="engineering.enG_TO_CHECKER_TAR_DT = $event" name="enG_TO_CHECKER_TAR_DT" />
+				</div>
+
+				<div class="flex flex-col py-2">
+					<label class="text-sm text-gray-600">Actual Date to Checker</label>
+					<input type="date" [ngModel]="engineering.enG_TO_CHECKER_ACT_DT | date:'yyyy-MM-dd'" (ngModelChange)="engineering.enG_TO_CHECKER_ACT_DT = $event" name="enG_TO_CHECKER_ACT_DT" />
+				</div>
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Requested Due Back Date</label>
+					<input type="date" [ngModel]="engineering.enG_CHECKER_TAR_DT | date:'yyyy-MM-dd'" (ngModelChange)="engineering.enG_CHECKER_TAR_DT = $event" name="enG_CHECKER_TAR_DT" />
+				</div>
+			</div>
+
+			<div class="flex flex-col ml-8">
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Back from Checker</label>
+					<input type="date" [ngModel]="engineering.enG_CHECKER_ACT_DT | date:'yyyy-MM-dd'" (ngModelChange)="engineering.enG_CHECKER_ACT_DT = $event" name="enG_CHECKER_ACT_DT" />
+				</div>
+				<div class="flex flex-col pt-2">
+
+					<label class="text-sm text-gray-600">Checked By</label>
+
+					<select class="border rounded p-1" [(ngModel)]="engineering.enG_CHECKER" name="enG_CHECKER">
+
+						<option *ngFor="let staff of staff" [selected]="engineering.enG_CHECKER == staff.rS_ID" [value]="staff.rS_ID">{{staff.rS_FIRST_NAME}} {{staff.rS_LAST_NAME}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="flex justify-end">
+			<button class="btn"
+					type='submit'>
+				Submit
+			</button>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,54 @@
+<div class="flex justify-end mt-2">
+	<button class="btn-reverse" (click)="addTechnician()">Add</button>
+</div>
+<div class="w-full rounded shadow-2 p-10 bg-white mt-2">
+	<form (ngSubmit)="onSubmit()">
+		<div class="flex justify-center">
+			<div class="flex flex-col">
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Engineer ID</label>
+					<input type="text" [(ngModel)]="technician.tecH_ENG_ID" name="tecH_ENG_ID" />
+				</div>
+
+				<div class="flex flex-col py-4">
+					<label class="text-sm text-gray-600">Assigned Date</label>
+					<input type="date" [ngModel]="technician.tecH_ASSIGNED_DT | date:'yyyy-MM-dd'" (ngModelChange)="technician.tecH_ASSIGNED_DT = $event" name="tecH_ASSIGNED_DT" />
+				</div>
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Unassigned Date</label>
+					<input type="date" [ngModel]="technician.tecH_UNASSIGNED_DT | date:'yyyy-MM-dd'" (ngModelChange)="technician.tecH_UNASSIGNED_DT = $event" name="tecH_UNASSIGNED_DT" />
+				</div>
+			</div>
+
+			<div class="flex flex-col ml-8 pb-2">
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Technician</label>
+
+					<select class="border rounded p-1" [(ngModel)]="technician.tecH_RS_ID" name="tecH_RS_ID">
+
+						<option *ngFor="let staff of staff" [selected]="technician.tecH_RS_ID == staff.rS_ID" [value]="staff.rS_ID">{{staff.rS_FIRST_NAME}} {{staff.rS_LAST_NAME}}</option>
+					</select>
+				</div>
+
+				<div class="flex flex-col py-2">
+					<label class="text-sm text-gray-600">Created By/Date</label>
+					<input class="bg-gray-200" readonly type="text" [(ngModel)]="technician.tecH_CREATED_BY" name="tecH_CREATED_BY" />
+
+					<input class="bg-gray-200" readonly type="date" [ngModel]="technician.tecH_CREATED_DT | date:'yyyy-MM-dd'" (ngModelChange)="technician.tecH_CREATED_DT = $event" name="tecH_CREATED_DT" />
+				</div>
+
+				<div class="flex flex-col">
+					<label class="text-sm text-gray-600">Modified By/Date</label>
+					<input class="bg-gray-200" readonly type="text" [(ngModel)]="technician.tecH_MODIFIED_BY" name="tecH_MODIFIED_BY" />
+
+					<input class="bg-gray-200" readonly type="date" [ngModel]="technician.tecH_MODIFIED_DT | date:'yyyy-MM-dd'" (ngModelChange)="technician.tecH_MODIFIED_DT = $event" name="tecH_MODIFIED_DT" />
+				</div>
+			</div>
+		</div>
+		<div class="flex justify-end mt-4">
+			<button class="btn" type='submit'>
+				Submit
+			</button>
+		</div>
+	</form>
+</div>

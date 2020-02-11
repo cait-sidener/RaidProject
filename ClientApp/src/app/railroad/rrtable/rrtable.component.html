@@ -1,0 +1,45 @@
+<div class="flex justify-end fade-in">
+	<div class="max-w-sm p-3 bg-white rounded-b overflow-hidden shadow-2 flex flex-end mb-4 flex justify-center">
+		<p class="text-2xl">Railroad Agreement</p>
+	</div>
+</div>
+
+<div *ngIf="showRailroads">
+	<div class="flex justify-end">
+		<!--<div class="my-auto">
+			<label class="mr-2">Filter</label>
+			<input [(ngModel)]="listFilter" name="listFilter" type="text" placeholder="Name" />
+		</div>-->
+		<app-pagination [items]="filteredRailroads" [pageSize]="10" (changePage)="onChangePage($event)"></app-pagination>
+	</div>
+
+	<div class="rounded shadow-2 p-8 bg-white mt-2">
+		<table class="w-full">
+			<thead>
+				<tr class="text-gray-600 text-sm">
+					<th class="font-normal">Agreement Number</th>
+					<th class="font-normal">County Name</th>
+					<th class="font-normal">Railroad Company</th>
+					<th class="font-normal">Last Agreement Expiration Date</th>
+					<th class="font-normal">Location</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="cursor-pointer td" *ngFor="let railroad of railroads; trackBy: trackById" [routerLink]="['/rrtable', { outlets: { 'secondary': [railroad.rrA_ID] } } ]" [routerLinkActive]="['active']">
+					<td>{{railroad.rrA_AGREEMENT_NUMBER}}</td>
+					<td>{{railroad.rrA_COUNTY_NAME}}</td>
+					<td>{{railroad.rrA_RR_COMPANY_NAME}}</td>
+					<td>{{railroad.rrA_LAST_AGREEMENT_EXPIRATION_DATE | date:'MM/dd/yyyy'}}</td>
+					<td>{{railroad.rrA_LOCATION}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="btn mt-2" (click)="refreshRailroads()" *ngIf="showRailroads">Refresh</button>
+		<button class="btn mt-2 ml-2" (click)="addRailroad()">Add</button>
+
+	</div>
+
+</div>
+<div *ngIf="railroads && railroads.length; else noContent">
+</div>
+<router-outlet name="secondary"></router-outlet>
