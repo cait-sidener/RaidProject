@@ -16,7 +16,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
 		<PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
-		<PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 		<PackageReference Include="SimpleImpersonation" Version="3.0.0" />
 		<PackageReference Include="System.DirectoryServices" Version="4.5.0" />
 		<PackageReference Include="System.Drawing.Common" Version="4.5.1" />
